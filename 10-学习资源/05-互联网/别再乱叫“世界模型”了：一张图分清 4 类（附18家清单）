@@ -1,0 +1,124 @@
+别再乱叫“世界模型”了：一张图分清 4 类（附18家清单）
+图片
+来源：AI工业（采用 AI 工具整理）
+世界模型正在迎来一次复兴，但这个术语正在被过度泛化地使用——而且常常用得很糟。我们需要一套更好的分类体系（taxonomy），而不是把任何东西都叫“世界模型”。
+
+图片
+过去一年里，研究界和各行各业对世界模型的兴趣显著上升。这在机器学习会议、新创公司，甚至Google 搜索趋势里都能看出来。更重要的是，这种趋势似乎还在加速，而不是放缓。每周都有新论文、新演示（demo）和新系统出现。这种动能很有意义：它意味着越来越多非常聪明的人（他们本可以把时间投入到几乎任何方向），正在选择把时间投入到世界模型上，因为他们相信这就是最值得投入的方向。
+
+素材来自 On the Origin of Species (of World Models)，本文为翻译稿供参考。完整版/英文原版/更多资料/18家清单 见文末。
+那么，究竟在建模什么？
+
+用这个视角，我想提出一个分类法，把当前被称作“世界模型”的 AI 模型分成四类。
+
+
+
+世界模型（World models）：「学习世界如何演化」
+
+空间智能（Spatial intelligence）：「学习世界如何呈现」
+
+行为模型（Behaviour models）：「学习如何在世界中行动」
+
+代理世界模型（Proxy world models）：「学习世界的抽象表示」
+
+世界模型： 「学习世界如何演化」
+关于“世界模型”的经典定义，是指一种被训练来预测「世界如何演化」的模型。这个说法由 Ha 与 Schmidhuber（2018）在强化学习语境下提出。
+
+该模型会在给定世界表示中、某种将被施加的变化（change）的前提下，预测世界可能出现的未来状态。关键在于：这意味着它是一个动力学模型（dynamics model）——在给定一个动作（action）时，预测状态将如何变化。这种定义在强化学习与机器人领域非常常见，并伴随着一种“端到端学习（end-to-end）”的信念。
+
+Odyssey （https://odyssey.ml/ ）和 DeepMind 的 Genie （https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/ ）是这一类别模型的较好公开例子。Yann LeCun 提出的 JEPA 方案（https://openreview.net/pdf?id=BZ5a1r-kVsf ），则是对这种“世界模型”定义的一种特定诠释。
+
+这是一类非常通用的模型，可以把它理解为：从数据中以端到端方式学习结构（structure）、动力学（dynamics）与行为（behaviour）。
+
+世界模型为通用多模态 AI 提供了一条路径；也为通用机器人提供了加速器——这一点在 @DrJimFan （https://x.com/DrJimFan）的博文 《第二种预训练范式（The Second Pre-training Paradigm）》（https://x.com/DrJimFan/status/2018754323141054786）中有很好的阐述。它们还能提供超越游戏引擎的新型体验，并开启一个极其巨大的长尾应用空间，很多应用听起来甚至像科幻。
+
+空间智能（Spatial Intelligence）：「学习世界如何呈现」
+
+第二种模型的定义，与其说是“世界模型”，不如更适合称为「空间智能」。这一定义主要来自三维计算机视觉（3D computer vision）社区，而不是强化学习或机器人领域。
+
+这类模型聚焦于「学习世界看起来是什么样（how the world appears）」。其核心观点是：要实现空间理解，需要显式表示（explicit representations）——当然，学界也存在被广泛认可的不同观点。@vincesitzmann （https://x.com/vincesitzmann）文的章很好地概括了我们的视角。World Labs （https://www.worldlabs.ai/）是这一类别的一个典型例子。我们也见过有人以类似方式来描述 3D Gaussian Splatting（3D 高斯泼溅）重建。需要强调的是：这一类别不被视为动力学模型（dynamics model），也不以动作（action）为条件（action-conditioned）。
+
+这类模型为提升 3D 工具链的生产效率提供了一条路径。例如，基于现有游戏引擎来简化游戏开发流程。但同样重要的是：这类模型通往更通用 AI 的路径并不清晰——因为它们所使用的显式表示，会让端到端学习（end-to-end learning）变得更困难。
+
+行为模型（Behaviour Models）：「学习如何在世界中行动」
+
+第三类是智能体行为（agent behaviour）：模型学习在某个状态（state）下应该采取什么动作（action）。这也常被称为「策略学习（policy learning）」。
+
+在这一类别中，行业里有不少研究探索。有些公司（例如 General Intuition）（https://www.generalintuition.com/）专注于在游戏环境中学习智能体行为，并相信这种能力可以泛化到更广泛的环境中。另一些公司（例如 Simile）（https://simile.ai/blog/the-simulation-company）则聚焦于人类行为建模，并将具备代理能力的语言模型（agentic language models）用于企业场景。也可以说，世界模型在某种意义上会隐式地建模行为：因为它为了预测状态动力学，必须对智能体的行为方式有所刻画。
+
+这一类模型提供的是在有限领域内的行为建模能力。即便某个 AI 模型无法超出其目标训练域，它仍然可能非常有价值。例如，自动驾驶模型（如 @wayve_ai （https://x.com/wayve_ai）的驾驶模型），或机器人基础模型（如 @physical_int）（https://x.com/physical_int），都可以归入这一类别。
+
+代理世界模型（Proxy World Models）：「学习世界的抽象表示」
+最后，我们有时会听到一种说法：“大语言模型（LLM）内部有一个世界模型。” 这种观点往往受到一些研究的启发，例如 《在用程序训练的语言模型中涌现出的程序语义表征》（2024 年 8 月）（https://arxiv.org/pdf/2305.11169）。确实有证据表明，语言模型会形成对简单世界状态（world state）的内部表征。
+
+但需要指出的是：这种“世界状态”的概念，和真正的「神经仿真模型（neural simulation model）」所需要的能力相比，仍然过于简化。用这种方式训练出来的模型，可能能“推理”出流体大致如何流动，但未必能呈现出像涡脱落（vortex shedding）这样具有细节与规律性的物理现象模式。充其量，这类模型只是通过语言，学到了一种对底层现象的代理（proxy）与近似。
+
+因此，这一类模型本质上就是我们今天所说的语言模型——以及它们已经能够做到的那些令人惊叹的能力。
+
+我们对世界模型从“单一领域”走向“通用价值”的转变感到兴奋。
+
+自动驾驶之所以能够被解决，基础在于两件事：
+
+1）预测世界，以及 2）学习对情境作出正确的行为响应。解决这些曾是一个巨大的前沿 AI 科研挑战。事实证明，这些投入是值得的——如今行业正在进入规模化扩张阶段。
+
+世界模型构成了自动驾驶得以建立的基础：它们用于预测潜在的未来。更令人兴奋的是，它们提供了一条最直接的路径，通往一种未来形态的 多模态、自回归（autoregressive）模型——这种模型能够从观察中学习因果关系。
+
+这是一种最通用的智能形态，把视觉、音频与语言融合在一起。模型从海量的真实世界观察数据中学习，同时也从合成观察数据中学习——当我们希望偏离现实或增强模型性能时，合成数据就会派上用场。
+
+在这样的未来，你与 AI 交互的形式将不再是一个文本输入框，而会变成一条由智能像素（intelligent pixels）构成的连续信息流。
+
+不难想象，这些“智能像素”将以各种方式改变我们的生活。机器人与娱乐是最显而易见将被重塑的行业，但这只是开始。这实际上是 Holodeck（全息甲板）的诞生，而世界模型正是支撑这一未来的基础技术。
+
+延伸阅读
+以下这些博客文章，适合作为进一步阅读材料：
+
+《第二种预训练范式》，Jim Fan（2026 年 2 月）https://x.com/DrJimFan/status/2018754323141054786?s=20
+
+《计算机视觉版“苦涩教训”的味道》，Vincent Sitzman（2026 年 2 月）
+
+https://www.vincentsitzmann.com/blog/bitter_lesson_of_cv/
+《在机器人世界模型中，我们应该预测像素吗？》，Anirudha Majumdar（2026 年 2 月）https://x.com/Majumdar_Ani/status/2021242532517040560
+
+我也建议回到世界模型研究的起源去读一读。最初，世界模型主要为单一领域而发展，比如自动驾驶、强化学习（RL）测试环境，或平台跳跃类游戏。其中大多数模型并未公开发布。但这种情况正在改变：Genie 3 和 Odyssey-2 都已发布，并且具备相当程度的通用适用性。
+
+不同的前沿实验室在优先强化的模型能力方向上仍存在差异，但我们预计这些差异会逐步收敛。
+
+下面的内容将概述世界模型发展过程中的主要主题与关键脉络。（18家清单）
+
+Image
+
+2018 年 12 月：World Models https://worldmodels.github.io/
+
+2020 年 3 月：Dreamer https://arxiv.org/pdf/1912.01603
+
+2021 年 10 月：FIERY https://arxiv.org/pdf/2104.10490
+
+2022 年 6 月：JEPA proposal https://openreview.net/pdf?id=BZ5a1r-kVsf
+
+2023 年 10 月：GAIA 1 https://arxiv.org/pdf/2309.17080
+
+2024 年 2 月：Genie https://arxiv.org/pdf/2402.15391
+
+2024 年 4 月：Dreamer v3 https://arxiv.org/pdf/2301.04104
+
+2024 年 12 月：Genie 2 https://deepmind.google/blog/genie-2-a-large-scale-foundation-world-model/
+
+2025 年 1 月：Cosmos https://arxiv.org/pdf/2501.03575v1
+
+2025 年 3 月：GAIA 2 https://arxiv.org/abs/2503.20523
+
+2025 年 5 月：Odyssey-1 https://odyssey.ml/introducing-odyssey-1
+
+2025 年 6 月：V-JEPA 2 https://arxiv.org/pdf/2506.09985
+
+2025 年 8 月：Genie 3 https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/
+
+2025 年 10 月：Odyssey-2 https://odyssey.ml/introducing-odyssey-2
+
+2025 年 12 月：GAIA 3 https://wayve.ai/.well-known/sgcaptcha/?r=%2Fthinking%2Fgaia-3%2F&y=ipr:205.198.70.1:1772542953.273
+
+2026 年 1 月：Odyssey-2 Pro https://odyssey.ml/the-gpt-2-moment-for-world-models
+
+2026 年 1 月：Lingbot-World https://arxiv.org/pdf/2601.20540
+
+2026 年 2 月：DreamDojo https://dreamdojo-world.github.io/
